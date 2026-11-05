@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡60 Años de Bety Alonso! - Boleto de Admisión</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Poppins:wght@300;400;600;700&family=Limelight&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bettyRed: '#C8102E',
+                        bettyDarkRed: '#8B0000',
+                        bettyGold: '#D4AF37',
+                        bettyCream: '#FDF7E7',
+                        bettyPaper: '#FFFDD0',
+                        bettyDark: '#121212',
+                    },
+                    fontFamily: {
+                        vintage: ['Limelight', 'cursive'],
+                        serifHeader: ['Playfair Display', 'serif'],
+                        body: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Fondo general suave crema vintage */
+        body {
+            background-color: #F7F0DC;
+            background-image: radial-gradient(#D4AF37 0.75px, transparent 0.75px), radial-gradient(#D4AF37 0.75px, #F7F0DC 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            color: #121212;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Marco de doble filigrana dorada */
+        .ticket-outer-border {
+            background-color: #FFFDD0;
+            border: 5px solid #D4AF37;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.25), inset 0 0 20px rgba(212, 175, 55, 0.25);
+            position: relative;
+        }
+
+        .ticket-inner-border {
+            border: 2px solid #121212;
+            margin: 6px;
+            padding: 16px;
+            position: relative;
+        }
+
+        /* Esquinas ornamentales Art Déco */
+        .corner-ornament {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-color: #D4AF37;
+            pointer-events: none;
+        }
+        .corner-tl { top: 2px; left: 2px; border-top: 4px solid #D4AF37; border-left: 4px solid #D4AF37; }
+        .corner-tr { top: 2px; right: 2px; border-top: 4px solid #D4AF37; border-right: 4px solid #D4AF37; }
+        .corner-bl { bottom: 2px; left: 2px; border-bottom: 4px solid #D4AF37; border-left: 4px solid #D4AF37; }
+        .corner-br { bottom: 2px; right: 2px; border-bottom: 4px solid #D4AF37; border-right: 4px solid #D4AF37; }
+
+        /* Animación suave de aparición */
+        .slide-up {
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animación de Latido (Heartbeat) */
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.06); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.06); }
+            70% { transform: scale(1); }
+        }
+
+        .animate-heartbeat {
+            animation: heartbeat 2.2s infinite ease-in-out;
+        }
+
+        /* Pulsación de botones */
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 12px rgba(200, 16, 46, 0.5); }
+            50% { transform: scale(1.04); box-shadow: 0 0 22px rgba(200, 16, 46, 0.8); }
+        }
+
+        .btn-pulse {
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+
+        /* Carrusel deslizable */
+        .carousel-container {
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Elementos flotantes multiplicados de fondo */
+        .floating-icon {
+            position: absolute;
+            color: #C8102E;
+            opacity: 0.35;
+            animation: floatIcon 5s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes floatIcon {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 0.35; }
+            50% { transform: translateY(-18px) rotate(15deg) scale(1.15); opacity: 0.65; }
+            100% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 0.35; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-between p-2 sm:p-6 relative">
+
+    <!-- MULTIPLICIDAD DE ELEMENTOS FLOTANTES EN EL FONDO -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <i class="fa-solid fa-heart floating-icon text-2xl" style="top: 5%; left: 5%; animation-delay: 0s;"></i>
+        <i class="fa-solid fa-star floating-icon text-bettyGold text-xl" style="top: 15%; right: 8%; animation-delay: 1s;"></i>
+        <i class="fa-solid fa-music floating-icon text-xl" style="top: 28%; left: 12%; animation-delay: 2s;"></i>
+        <i class="fa-solid fa-kiss-wink-heart floating-icon text-2xl" style="top: 38%; right: 5%; animation-delay: 0.5s;"></i>
+        <i class="fa-solid fa-heart floating-icon text-3xl" style="top: 50%; left: 4%; animation-delay: 1.5s;"></i>
+        <i class="fa-solid fa-star floating-icon text-bettyGold text-2xl" style="top: 62%; right: 12%; animation-delay: 2.5s;"></i>
+        <i class="fa-solid fa-music floating-icon text-2xl" style="top: 72%; left: 8%; animation-delay: 3s;"></i>
+        <i class="fa-solid fa-heart floating-icon text-2xl" style="top: 85%; right: 7%; animation-delay: 1.8s;"></i>
+        <i class="fa-solid fa-kiss-wink-heart floating-icon text-xl" style="top: 92%; left: 15%; animation-delay: 2.2s;"></i>
+        <i class="fa-solid fa-star floating-icon text-bettyGold text-lg" style="top: 45%; right: 25%; animation-delay: 3.5s;"></i>
+        <i class="fa-solid fa-heart floating-icon text-xl" style="top: 20%; left: 25%; animation-delay: 2.8s;"></i>
+        <i class="fa-solid fa-music floating-icon text-lg" style="top: 80%; right: 28%; animation-delay: 1.2s;"></i>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="w-full max-w-xl z-10 space-y-6 my-2 text-center">
+
+        <!-- CONTADOR REGRESIVO INTERACTIVO -->
+        <section class="ticket-outer-border rounded-2xl p-4 sm:p-5 text-center shadow-xl slide-up">
+            <h2 class="font-serifHeader text-base sm:text-lg text-bettyDarkRed font-bold mb-3 uppercase tracking-wider flex items-center justify-center gap-2">
+                <i class="fa-solid fa-hourglass-half text-bettyGold animate-spin" style="animation-duration: 9s;"></i> Faltan Poco Tiempo Para La Fiesta:
+            </h2>
+            
+            <div id="countdown" class="grid grid-cols-4 gap-2 max-w-sm mx-auto">
+                <div class="bg-gradient-to-b from-bettyRed to-bettyDarkRed border border-bettyGold rounded-lg p-2 text-center shadow-md animate-heartbeat">
+                    <span id="days" class="font-vintage text-2xl sm:text-3xl text-bettyCream block">00</span>
+                    <span class="text-[9px] sm:text-xs text-bettyGold uppercase font-semibold">Días</span>
+                </div>
+                <div class="bg-gradient-to-b from-bettyRed to-bettyDarkRed border border-bettyGold rounded-lg p-2 text-center shadow-md">
+                    <span id="hours" class="font-vintage text-2xl sm:text-3xl text-bettyCream block">00</span>
+                    <span class="text-[9px] sm:text-xs text-bettyGold uppercase font-semibold">Horas</span>
+                </div>
+                <div class="bg-gradient-to-b from-bettyRed to-bettyDarkRed border border-bettyGold rounded-lg p-2 text-center shadow-md">
+                    <span id="minutes" class="font-vintage text-2xl sm:text-3xl text-bettyCream block">00</span>
+                    <span class="text-[9px] sm:text-xs text-bettyGold uppercase font-semibold">Min</span>
+                </div>
+                <div class="bg-gradient-to-b from-bettyRed to-bettyDarkRed border border-bettyGold rounded-lg p-2 text-center shadow-md animate-heartbeat">
+                    <span id="seconds" class="font-vintage text-2xl sm:text-3xl text-bettyCream block">00</span>
+                    <span class="text-[9px] sm:text-xs text-bettyGold uppercase font-semibold">Seg</span>
+                </div>
+            </div>
+            <p class="text-xs text-bettyDarkRed mt-3 font-serifHeader font-bold italic">
+                Sábado, 21 de Noviembre del 2026 • 17:00 Horas
+            </p>
+        </section>
+
+        <!-- SECCIÓN BOLETO DE ADMISIÓN -->
+        <section class="ticket-outer-border rounded-3xl shadow-2xl relative text-center slide-up">
+            
+            <div class="ticket-inner-border rounded-2xl text-center space-y-3">
+                <div class="corner-ornament corner-tl"></div>
+                <div class="corner-ornament corner-tr"></div>
+                <div class="corner-ornament corner-bl"></div>
+                <div class="corner-ornament corner-br"></div>
+
+                <!-- ILUSTRACIÓN RETRO DE BETTY BOOP -->
+                <div class="flex justify-center pt-2">
+                    <div class="w-32 h-36 sm:w-36 sm:h-40 relative flex items-center justify-center animate-heartbeat">
+                        <svg class="w-full h-full drop-shadow-md" viewBox="0 0 160 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 75C25 50 35 20 80 20C125 20 135 50 120 75C135 60 140 30 115 15C90 5 70 5 45 15C20 30 25 60 40 75Z" fill="#121212"/>
+                            <circle cx="35" cy="60" r="14" fill="#121212"/>
+                            <circle cx="125" cy="60" r="14" fill="#121212"/>
+                            <ellipse cx="80" cy="70" rx="38" ry="40" fill="#FFE0BD"/>
+                            <ellipse cx="62" cy="65" rx="10" ry="14" fill="#FFFFFF" stroke="#121212" stroke-width="1.5"/>
+                            <ellipse cx="98" cy="65" rx="10" ry="14" fill="#FFFFFF" stroke="#121212" stroke-width="1.5"/>
+                            <ellipse cx="64" cy="65" rx="5" ry="8" fill="#121212"/>
+                            <ellipse cx="96" cy="65" rx="5" ry="8" fill="#121212"/>
+                            <circle cx="66" cy="62" r="2" fill="#FFFFFF"/>
+                            <circle cx="98" cy="62" r="2" fill="#FFFFFF"/>
+                            <path d="M 48 56 L 55 59 M 50 50 L 57 55 M 54 46 L 60 52" stroke="#121212" stroke-width="2"/>
+                            <path d="M 112 56 L 105 59 M 110 50 L 103 55 M 106 46 L 100 52" stroke="#121212" stroke-width="2"/>
+                            <circle cx="50" cy="78" r="6" fill="#FFB6C1" opacity="0.6"/>
+                            <circle cx="110" cy="78" r="6" fill="#FFB6C1" opacity="0.6"/>
+                            <path d="M72 88 Q80 95 88 88 Q80 91 72 88 Z" fill="#C8102E" stroke="#8B0000" stroke-width="1"/>
+                            <circle cx="80" cy="74" r="1.5" fill="#C8102E"/>
+                            <path d="M50 25 C30 10 30 35 65 30 Z" fill="#C8102E"/>
+                            <path d="M110 25 C130 10 130 35 95 30 Z" fill="#C8102E"/>
+                            <circle cx="80" cy="28" r="6" fill="#8B0000"/>
+                            <circle cx="38" cy="80" r="7" stroke="#D4AF37" stroke-width="3" fill="none"/>
+                            <circle cx="122" cy="80" r="7" stroke="#D4AF37" stroke-width="3" fill="none"/>
+                            <circle cx="60" cy="112" r="3.5" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.5"/>
+                            <circle cx="68" cy="116" r="3.5" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.5"/>
+                            <circle cx="76" cy="118" r="4" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.5"/>
+                            <circle cx="84" cy="118" r="4" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.5"/>
+                            <circle cx="92" cy="116" r="3.5" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.5"/>
+                            <circle cx="100" cy="112" r="3.5" fill="#FFFFFF" stroke="#D4AF37" stroke-width="0.5"/>
+                            <path d="M55 118 L80 130 L105 118 L125 175 L35 175 Z" fill="#C8102E"/>
+                            <circle cx="70" cy="140" r="1.5" fill="#D4AF37"/>
+                            <circle cx="90" cy="150" r="2" fill="#D4AF37"/>
+                            <circle cx="60" cy="160" r="1.5" fill="#D4AF37"/>
+                            <circle cx="100" cy="165" r="1.5" fill="#D4AF37"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- ENCABEZADOS CENTRADOS -->
+                <div class="space-y-1">
+                    <p class="font-vintage text-base sm:text-lg text-121212 tracking-widest uppercase text-center">
+                        <i class="fa-solid fa-star text-bettyGold text-xs mr-1"></i> INVITACIÓN ESPECIAL <i class="fa-solid fa-star text-bettyGold text-xs ml-1"></i>
+                    </p>
+                    <h2 class="font-vintage text-3xl sm:text-4xl text-bettyDark tracking-wider text-center">
+                        BOLETO DE ADMISIÓN
+                    </h2>
+                </div>
+
+                <!-- TÍTULO PRINCIPAL -->
+                <div class="py-2">
+                    <h1 class="font-vintage text-3xl sm:text-5xl text-bettyDark drop-shadow-[0_2px_0_#D4AF37] leading-tight text-center">
+                        ¡EL 60º ANIVERSARIO DE BETY ALONSO!
+                    </h1>
+                    <p class="font-vintage text-lg sm:text-xl text-bettyDark mt-2 text-center uppercase tracking-wider">
+                        ¡ESTÁS INVITADO A CELEBRAR!
+                    </p>
+                </div>
+
+                <!-- DATOS DEL EVENTO CENTRADOS -->
+                <div class="space-y-2 py-3 border-y-2 border-bettyDark/15 my-3 text-center">
+                    <p class="text-sm sm:text-base font-bold text-bettyDark">
+                        <span class="text-bettyGold font-vintage text-base">FECHA:</span> Sábado, 21 de Noviembre del 2026
+                    </p>
+                    <p class="text-sm sm:text-base font-bold text-bettyDark">
+                        <span class="text-bettyGold font-vintage text-base">HORA:</span> A partir de las 17:00 Horas
+                    </p>
+                    <div class="pt-1">
+                        <p class="text-sm sm:text-base font-extrabold text-bettyDark uppercase">
+                            <span class="text-bettyGold font-vintage text-base">LUGAR:</span> LA FIESTA SE REALIZARÁ EN CASA
+                        </p>
+                        <p class="text-xs sm:text-sm font-semibold text-bettyDark/80 mt-0.5">
+                            Calle 662 B #116 Colonia San Juan de Aragón IV y V Secciones
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MENSAJE INVITACIONAL -->
+                <p class="font-serifHeader italic font-bold text-xs sm:text-sm text-bettyDarkRed px-2 text-center">
+                    ¡Únete a nosotros para una noche llena de alegría, música y diversión en honor a Bety!
+                </p>
+
+                <!-- BOTONES CENTRADOS DE CONFIRMACIÓN -->
+                <div class="pt-2 pb-1 space-y-2">
+                    <p class="text-xs font-bold uppercase tracking-wider text-bettyDark">CONFIRMA TU ASISTENCIA A MI NUMERO: 5562042129</p>
+                    
+                    <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
+                        <a href="https://wa.me/525562042129?text=Hola%20Bety,%20confirmo%20mi%20asistencia%20y%20la%20de%20mi%20familia%20para%20tu%20fiesta%20de%2060%20a%C3%B1os." 
+                           target="_blank" 
+                           class="btn-pulse bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-full text-xs sm:text-sm flex items-center gap-1.5 shadow-md">
+                            <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp
+                        </a>
+
+                        <a href="sms:5562042129?body=Hola%20Bety,%20confirmo%20mi%20asistencia%20y%20la%20de%20mi%20familia%20para%20tu%20fiesta%20de%2060%20a%C3%B1os." 
+                           class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full text-xs sm:text-sm flex items-center gap-1.5 shadow-md">
+                            <i class="fa-solid fa-comment-sms text-base"></i> Mensaje SMS
+                        </a>
+
+                        <a href="tel:5562042129" 
+                           class="bg-bettyRed hover:bg-bettyDarkRed text-white font-bold py-2 px-4 rounded-full border border-bettyGold text-xs sm:text-sm flex items-center gap-1.5 shadow-md">
+                            <i class="fa-solid fa-phone text-base"></i> Llamar
+                        </a>
+                    </div>
+                </div>
+
+                <!-- LÍNEA PUNTEADA DE DESPRENDIMIENTO -->
+                <div class="relative py-3">
+                    <div class="border-b-4 border-dashed border-bettyDark/40 w-full"></div>
+                    <div class="absolute -left-7 -top-0.5 w-6 h-6 rounded-full bg-[#F7F0DC] border-r-2 border-bettyGold"></div>
+                    <div class="absolute -right-7 -top-0.5 w-6 h-6 rounded-full bg-[#F7F0DC] border-l-2 border-bettyGold"></div>
+                </div>
+
+                <!-- SOLAPA INFERIOR DEL BOLETO -->
+                <div class="flex items-center justify-between pt-1 pb-2 px-2">
+                    <div class="text-left">
+                        <span class="font-vintage text-4xl sm:text-5xl text-bettyDark drop-shadow-[0_2px_0_#D4AF37]">60</span>
+                    </div>
+                    <div class="text-center flex-1 px-2">
+                        <p class="font-vintage text-xs sm:text-sm text-bettyDark uppercase tracking-wider">
+                            ESTE BOLETO ES VÁLIDO PARA TI Y TU FAMILIA
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CARRUSEL CON PALPITAR DE IMÁGENES -->
+        <section class="ticket-outer-border rounded-3xl p-4 text-center shadow-2xl slide-up">
+            <h3 class="font-vintage text-2xl text-bettyDarkRed mb-1">Galería de Recuerdos</h3>
+            <p class="text-xs text-bettyDark/70 mb-3 font-body">Momentos inolvidables junto a Bety</p>
+
+            <div class="relative group" onmouseenter="stopAutoplay()" onmouseleave="startAutoplay()" ontouchstart="stopAutoplay()" ontouchend="startAutoplay()">
+                <div id="photoCarousel" class="carousel-container flex gap-3 overflow-x-auto p-2 scroll-smooth rounded-2xl">
+                    
+                    <!-- Foto 1 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="1000160827.jpg" alt="Soplando la vela" class="w-full h-60 object-cover" onerror="this.src='comida.jpeg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Pidiendo Deseos 🎂</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 2 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="1000160828.jpg" alt="Al aire libre" class="w-full h-60 object-cover" onerror="this.src='bosque.jpeg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Sonrisas e Ilusión 🌲</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 3 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="1000160826.jpg" alt="De viaje" class="w-full h-60 object-cover" onerror="this.src='playa.jpeg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Disfrutando el Camino 🌊</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 4 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="1000160825.jpg" alt="Celebración" class="w-full h-60 object-cover" onerror="this.src='cumple.jpeg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Celebrando la Vida 🌟</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 5 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="bety.jpeg" alt="Bety Alonso" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Bety Alonso ❤️</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 6 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="bibis.jpeg" alt="Con Bibis" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Grandes Momentos ✨</p>
+                        </div>
+                    </div>
+
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="cumpleaños.jpeg" alt="Con Bibis" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Disfrutando ✨</p>
+                        </div>
+                    </div>
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="amigos.jpeg" alt="Con Bibis" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Amistades ✨</p>
+                        </div>
+                    </div>
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="comidas.jpeg" alt="Con Bibis" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Convivir ✨</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 7 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="familia.jpeg" alt="Familia" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">En Familia 👨‍👩‍👧‍👦</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 8 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="hermanos.jpeg" alt="Hermanos" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Con Hermanos 💖</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 9 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="itzae.jpeg" alt="Itzae" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Familia 🌟</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 10 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="sobrinos.jpeg" alt="Sobrinos" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Con los Sobrinos 🎉</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 11 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="marce.jpeg" alt="Marce" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Con mi Madre 🌷</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 12 -->
+                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
+                        <img src="aaron.jpeg" alt="Aaron" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
+                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
+                            <p class="text-xs font-serifHeader italic">Recuerdo💫</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Botones de navegación carrusel -->
+                <button onclick="scrollCarousel(-240)" class="absolute left-1 top-1/2 -translate-y-1/2 bg-bettyRed text-white p-2 rounded-full border border-bettyGold shadow-md hover:bg-bettyDarkRed transition z-10">
+                    <i class="fa-solid fa-chevron-left text-base"></i>
+                </button>
+                <button onclick="scrollCarousel(240)" class="absolute right-1 top-1/2 -translate-y-1/2 bg-bettyRed text-white p-2 rounded-full border border-bettyGold shadow-md hover:bg-bettyDarkRed transition z-10">
+                    <i class="fa-solid fa-chevron-right text-base"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- UBICACIÓN EN GOOGLE MAPS -->
+        <section class="ticket-outer-border rounded-3xl p-4 text-center shadow-xl">
+            <h3 class="font-vintage text-xl text-bettyDarkRed mb-2">Ubicación del Evento</h3>
+            <a href="https://www.google.com/maps/search/?api=1&query=Calle+662+B+116+San+Juan+de+Aragon+IV+y+V+Seccion+07979+Gustavo+A+Madero+CDMX" 
+               target="_blank" 
+               class="inline-flex items-center gap-2 bg-bettyRed text-white font-bold py-2.5 px-6 rounded-full border border-bettyGold shadow-lg hover:bg-bettyDarkRed transition text-xs sm:text-sm">
+                <i class="fa-solid fa-map-location-dot text-base animate-bounce"></i> Abrir en Google Maps
+            </a>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="w-full max-w-xl text-center py-6 text-xs text-bettyDark z-10">
+        <button onclick="lanzaExplotionConfeti()" class="mb-3 px-6 py-2.5 rounded-full bg-bettyRed text-white font-bold border-2 border-bettyGold shadow-xl animate-heartbeat hover:bg-bettyDarkRed transition">
+            💥 ¡Lanzar Gran Explosión de Confeti! 💥
+        </button>
+        <p class="font-bold text-bettyDark/80">© 2026 Celebración 60º Aniversario • Bety Alonso</p>
+    </footer>
+
+    <!-- SCRIPTS INTERACTIVOS -->
+    <script>
+        // 1. CUENTA REGRESIVA
+        const targetDate = new Date("November 21, 2026 17:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = 
+                    "<div class='col-span-4 text-bettyRed font-vintage text-xl'>¡LA FIESTA HA COMENZADO! 🎉</div>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 2. CARRUSEL AUTOMÁTICO (CADA 3 SEGUNDOS)
+        const carousel = document.getElementById('photoCarousel');
+        let autoplayTimer = null;
+
+        function scrollCarousel(distance) {
+            carousel.scrollBy({ left: distance, behavior: 'smooth' });
+        }
+
+        function autoMoveCarousel() {
+            if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10) {
+                carousel.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                scrollCarousel(250);
+            }
+        }
+
+        function startAutoplay() {
+            if (!autoplayTimer) {
+                autoplayTimer = setInterval(autoMoveCarousel, 3000);
+            }
+        }
+
+        function stopAutoplay() {
+            clearInterval(autoplayTimer);
+            autoplayTimer = null;
+        }
+
+        startAutoplay();
+
+        // 3. EXPLOSIÓN DE CONFETI EN CAÑONAZO (CADA 3 SEGUNDOS Y MANUAL)
+        function lanzaExplotionConfeti() {
+            // Explosión Izquierda
+            confetti({
+                particleCount: 70,
+                angle: 60,
+                spread: 70,
+                origin: { x: 0, y: 0.65 },
+                colors: ['#C8102E', '#D4AF37', '#FFFDD0', '#8B0000', '#ffffff'],
+                startVelocity: 45
+            });
+            // Explosión Derecha
+            confetti({
+                particleCount: 70,
+                angle: 120,
+                spread: 70,
+                origin: { x: 1, y: 0.65 },
+                colors: ['#C8102E', '#D4AF37', '#FFFDD0', '#8B0000', '#ffffff'],
+                startVelocity: 45
+            });
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(lanzaExplotionConfeti, 400);
+            setInterval(lanzaExplotionConfeti, 3000); // Explosión periódica cada 3 segundos
+        });
+    </script>
+</body>
+</html>
