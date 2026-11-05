@@ -36,22 +36,19 @@
     </script>
 
     <style>
-        /* Fondo general suave crema vintage */
+        /* Fondo Rojo Borgoña Elegante con degradado místico */
         body {
-            background-color: #F7F0DC;
-            background-image: radial-gradient(#D4AF37 0.75px, transparent 0.75px), radial-gradient(#D4AF37 0.75px, #F7F0DC 0.75px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
+            background: radial-gradient(circle at center, #3d0309 0%, #140103 100%);
             color: #121212;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
 
-        /* Marco de doble filigrana dorada */
+        /* Marco de doble filigrana dorada con fondo crema conservado */
         .ticket-outer-border {
             background-color: #FFFDD0;
             border: 5px solid #D4AF37;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.25), inset 0 0 20px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.5), inset 0 0 20px rgba(212, 175, 55, 0.25);
             position: relative;
         }
 
@@ -117,7 +114,7 @@
             display: none;
         }
 
-        /* Elementos flotantes multiplicados de fondo */
+        /* Elementos flotantes de fondo multiplicados */
         .floating-icon {
             position: absolute;
             color: #C8102E;
@@ -135,7 +132,7 @@
 </head>
 <body class="min-h-screen flex flex-col items-center justify-between p-2 sm:p-6 relative">
 
-    <!-- MULTIPLICIDAD DE ELEMENTOS FLOTANTES EN EL FONDO -->
+    <!-- ELEMENTOS DECORATIVOS EN FONDO ROJO -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <i class="fa-solid fa-heart floating-icon text-2xl" style="top: 5%; left: 5%; animation-delay: 0s;"></i>
         <i class="fa-solid fa-star floating-icon text-bettyGold text-xl" style="top: 15%; right: 8%; animation-delay: 1s;"></i>
@@ -183,7 +180,7 @@
             </p>
         </section>
 
-        <!-- SECCIÓN BOLETO DE ADMISIÓN -->
+        <!-- SECCIÓN BOLETO DE ADMISIÓN (INFORMACIÓN EN COLOR CREMA DE SIEMPRE) -->
         <section class="ticket-outer-border rounded-3xl shadow-2xl relative text-center slide-up">
             
             <div class="ticket-inner-border rounded-2xl text-center space-y-3">
@@ -301,8 +298,8 @@
                 <!-- LÍNEA PUNTEADA DE DESPRENDIMIENTO -->
                 <div class="relative py-3">
                     <div class="border-b-4 border-dashed border-bettyDark/40 w-full"></div>
-                    <div class="absolute -left-7 -top-0.5 w-6 h-6 rounded-full bg-[#F7F0DC] border-r-2 border-bettyGold"></div>
-                    <div class="absolute -right-7 -top-0.5 w-6 h-6 rounded-full bg-[#F7F0DC] border-l-2 border-bettyGold"></div>
+                    <div class="absolute -left-7 -top-0.5 w-6 h-6 rounded-full bg-[#3d0309] border-r-2 border-bettyGold"></div>
+                    <div class="absolute -right-7 -top-0.5 w-6 h-6 rounded-full bg-[#3d0309] border-l-2 border-bettyGold"></div>
                 </div>
 
                 <!-- SOLAPA INFERIOR DEL BOLETO -->
@@ -435,14 +432,6 @@
                         </div>
                     </div>
 
-                    <!-- Foto 12 -->
-                    <div class="min-w-[220px] sm:min-w-[250px] bg-white rounded-xl overflow-hidden border-2 border-bettyGold shadow-md flex-shrink-0 animate-heartbeat">
-                        <img src="aaron.jpeg" alt="Aaron" class="w-full h-60 object-cover" onerror="this.src='1000160825.jpg'">
-                        <div class="p-2 bg-bettyDark text-bettyCream text-center">
-                            <p class="text-xs font-serifHeader italic">Recuerdo💫</p>
-                        </div>
-                    </div>
-
                 </div>
 
                 <!-- Botones de navegación carrusel -->
@@ -468,11 +457,11 @@
     </main>
 
     <!-- PIE DE PÁGINA -->
-    <footer class="w-full max-w-xl text-center py-6 text-xs text-bettyDark z-10">
+    <footer class="w-full max-w-xl text-center py-6 text-xs text-bettyGold z-10">
         <button onclick="lanzaExplotionConfeti()" class="mb-3 px-6 py-2.5 rounded-full bg-bettyRed text-white font-bold border-2 border-bettyGold shadow-xl animate-heartbeat hover:bg-bettyDarkRed transition">
             💥 ¡Lanzar Gran Explosión de Confeti! 💥
         </button>
-        <p class="font-bold text-bettyDark/80">© 2026 Celebración 60º Aniversario • Bety Alonso</p>
+        <p class="font-bold text-bettyGold/90">© 2026 Celebración 60º Aniversario • Bety Alonso</p>
     </footer>
 
     <!-- SCRIPTS INTERACTIVOS -->
@@ -533,31 +522,34 @@
 
         startAutoplay();
 
-        // 3. EXPLOSIÓN DE CONFETI EN CAÑONAZO (CADA 3 SEGUNDOS Y MANUAL)
+        // 3. EXPLOSIÓN DE CONFETI GARANTIZADA
         function lanzaExplotionConfeti() {
-            // Explosión Izquierda
-            confetti({
-                particleCount: 70,
-                angle: 60,
-                spread: 70,
-                origin: { x: 0, y: 0.65 },
-                colors: ['#C8102E', '#D4AF37', '#FFFDD0', '#8B0000', '#ffffff'],
-                startVelocity: 45
-            });
-            // Explosión Derecha
-            confetti({
-                particleCount: 70,
-                angle: 120,
-                spread: 70,
-                origin: { x: 1, y: 0.65 },
-                colors: ['#C8102E', '#D4AF37', '#FFFDD0', '#8B0000', '#ffffff'],
-                startVelocity: 45
-            });
+            if (typeof confetti === 'function') {
+                // Cañón Izquierdo
+                confetti({
+                    particleCount: 80,
+                    angle: 60,
+                    spread: 70,
+                    origin: { x: 0, y: 0.7 },
+                    colors: ['#C8102E', '#D4AF37', '#FFFDD0', '#8B0000', '#ffffff'],
+                    startVelocity: 45
+                });
+                // Cañón Derecho
+                confetti({
+                    particleCount: 80,
+                    angle: 120,
+                    spread: 70,
+                    origin: { x: 1, y: 0.7 },
+                    colors: ['#C8102E', '#D4AF37', '#FFFDD0', '#8B0000', '#ffffff'],
+                    startVelocity: 45
+                });
+            }
         }
 
-        window.addEventListener('load', () => {
-            setTimeout(lanzaExplotionConfeti, 400);
-            setInterval(lanzaExplotionConfeti, 3000); // Explosión periódica cada 3 segundos
+        // Se ejecuta al cargar la página y se repite automáticamente cada 3 segundos
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(lanzaExplotionConfeti, 500);
+            setInterval(lanzaExplotionConfeti, 3000);
         });
     </script>
 </body>
